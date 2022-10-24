@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_strarr.c                                   :+:      :+:    :+:   */
+/*   ft_strarrlen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: donghyle <donghyle@student.42seoul.>       +#+  +:+       +#+        */
+/*   By: donghyle <donghyle@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 13:54:11 by donghyle          #+#    #+#             */
-/*   Updated: 2022/07/10 13:54:12 by donghyle         ###   ########.fr       */
+/*   Created: 2022/10/25 02:31:18 by donghyle          #+#    #+#             */
+/*   Updated: 2022/10/25 02:31:20 by donghyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	**ft_free_strarr(char **strarr)
+int	ft_strarrlen(char **strarr)
 {
-	char	**cursor;
+	int	i;
 
-	cursor = strarr;
-	while (*cursor)
-		free(*(cursor++));
-	free(strarr);
-	return (NULL);
+	i = 0;
+	while (strarr[i])
+		i++;
+	return (i);
 }

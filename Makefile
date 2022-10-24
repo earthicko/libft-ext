@@ -12,6 +12,7 @@ SRCNAME		= \
 			ft_isspace \
 			ft_isprint \
 			ft_strlen \
+			ft_strarrlen \
 			ft_memset \
 			ft_bzero \
 			ft_memcpy \
