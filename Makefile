@@ -66,7 +66,9 @@ SRCNAME		= \
 			ft_printf_fwrite_chr \
 			ft_printf_fwrite_num \
 			ft_printf_fwrite_ptr \
-			ft_printf_fwrite_utils
+			ft_printf_fwrite_utils \
+			t_intarr \
+			t_chararr
 
 SRC			= $(addprefix src/, $(addsuffix .c, $(SRCNAME)))
 OBJ			= $(addprefix src/, $(addsuffix .o, $(SRCNAME)))

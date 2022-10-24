@@ -37,6 +37,20 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+typedef struct s_intarr
+{
+	int	*data;
+	int	cap;
+	int	len;
+}	t_intarr;
+
+typedef struct s_chararr
+{
+	char	*data;
+	int		cap;
+	int		len;
+}	t_chararr;
+
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
@@ -86,4 +100,14 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char		*get_next_line(int fd);
 int			ft_printf(const char *format, ...);
+
+t_intarr	*create_intarr(int cap);
+t_intarr	*del_intarr(t_intarr *arr);
+int			realloc_intarr(t_intarr *arr, int new_cap);
+int			append_intarr(t_intarr *arr, int data);
+
+t_chararr	*create_chararr(int cap);
+t_chararr	*del_chararr(t_chararr *arr);
+int			realloc_chararr(t_chararr *arr, int new_cap);
+int			append_chararr(t_chararr *arr, char data);
 #endif
