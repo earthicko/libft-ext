@@ -25,7 +25,8 @@ enum	e_returncode
 	CODE_ERROR_GENERIC = -1,
 	CODE_ERROR_IO = -2,
 	CODE_ERROR_MALLOC = -3,
-	CODE_ERROR_SCOPE = -4
+	CODE_ERROR_SCOPE = -4,
+	CODE_ERROR_DATA = -5
 };
 
 typedef long long			t_ll;
