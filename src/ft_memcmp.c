@@ -10,15 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft_def.h"
 #include <stdlib.h>
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char	*cursor_1;
-	unsigned char	*cursor_2;
+	t_uchar	*cursor_1;
+	t_uchar	*cursor_2;
 
-	cursor_1 = (unsigned char *) s1;
-	cursor_2 = (unsigned char *) s2;
+	cursor_1 = (t_uchar *) s1;
+	cursor_2 = (t_uchar *) s2;
 	while (n > 0)
 	{
 		if (*cursor_1 != *cursor_2)

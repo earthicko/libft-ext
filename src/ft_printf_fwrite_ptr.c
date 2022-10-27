@@ -10,16 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "ft_printf.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 static int	ft_ptrlen(void *ptr)
 {
-	unsigned char	*cursor;
-	int				len;
+	t_uchar	*cursor;
+	int		len;
 
 	len = sizeof(ptr) * 2;
-	cursor = (unsigned char *)(&ptr) + sizeof(ptr) - 1;
+	cursor = (t_uchar *)(&ptr) + sizeof(ptr) - 1;
 	while (len > 0)
 	{
 		if (*cursor / 16 != 0)
@@ -60,10 +62,10 @@ static char	*cstr_ptr_prefix(t_conv *conv, int len_ptr)
 
 static void	cstr_ptr_fill_str(void *ptr, int len_ptr, char *buf)
 {
-	unsigned char	*cursor;
-	int				i;
+	t_uchar	*cursor;
+	int		i;
 
-	cursor = (unsigned char *)(&ptr) + sizeof(ptr) - 1;
+	cursor = (t_uchar *)(&ptr) + sizeof(ptr) - 1;
 	i = -(sizeof(ptr) * 2) + len_ptr;
 	while (i < len_ptr)
 	{

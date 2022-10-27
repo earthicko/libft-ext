@@ -12,17 +12,18 @@
 
 #include "libft.h"
 #include <limits.h>
+#include <stdlib.h>
 
 static void	skip_separator(char **start, int *map, int inverted)
 {
 	if (inverted)
 	{
-		while (**start != '\0' && !map[(unsigned char)**start])
+		while (**start != '\0' && !map[(t_uchar)**start])
 			(*start)++;
 	}
 	else
 	{
-		while (**start != '\0' && map[(unsigned char)**start])
+		while (**start != '\0' && map[(t_uchar)**start])
 			(*start)++;
 	}
 }
@@ -35,7 +36,7 @@ static char	*ft_strcpy_word(char *str, int *map)
 
 	idx = 0;
 	len_word = 0;
-	while (str[len_word] != '\0' && !map[(unsigned char)str[len_word]])
+	while (str[len_word] != '\0' && !map[(t_uchar)str[len_word]])
 		len_word++;
 	word = (char *)malloc(sizeof(char) * (len_word + 1));
 	if (!word)
@@ -62,7 +63,7 @@ static int	init_split_by_chars(char *str, char *sep, int *map, char ***strs)
 	}
 	while (*sep)
 	{
-		map[(unsigned char)*sep] = 1;
+		map[(t_uchar)(*sep)] = 1;
 		sep++;
 	}
 	n_words = 0;

@@ -13,43 +13,8 @@
 // contains: malloc, free, write, va_start, va_arg, va_copy, va_end
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stdlib.h>
-
-# define CODE_OK 0
-# define CODE_ERROR_GENERIC -1
-# define CODE_ERROR_IO -2
-# define CODE_ERROR_MALLOC -3
-# define CODE_ERROR_SCOPE -4
-
-typedef long long			t_ll;
-typedef unsigned long long	t_ull;
-typedef unsigned int		t_uint;
-
-enum e_bool
-{
-	FALSE = 0,
-	TRUE
-};
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
-typedef struct s_intarr
-{
-	int	*data;
-	int	cap;
-	int	len;
-}	t_intarr;
-
-typedef struct s_chararr
-{
-	char	*data;
-	int		cap;
-	int		len;
-}	t_chararr;
+# include <stddef.h>
+# include "libft_def.h"
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -77,14 +42,14 @@ int			ft_atoi(const char *str);
 int			ft_atoi_if_valid(char *str, int *ret);
 void		*ft_calloc(size_t count, size_t size);
 char		*ft_strdup(const char *s1);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_substr(char const *s, t_uint start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		**ft_split(char const *s, char c);
 char		**ft_split_by_chars(char const *s, char *sep);
 char		*ft_itoa(int n);
-char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void		ft_striteri(char *s, void (*f)(unsigned int, char*));
+char		*ft_strmapi(char const *s, char (*f)(t_uint, char));
+void		ft_striteri(char *s, void (*f)(t_uint, char*));
 void		ft_putchar_fd(char c, int fd);
 void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);

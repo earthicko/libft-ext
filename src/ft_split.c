@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include <limits.h>
+#include <stdlib.h>
 
 static void	skip_separator(char **start, char c, int inverted)
 {

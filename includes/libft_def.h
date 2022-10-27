@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   libft_def.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyle <donghyle@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,13 +10,47 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include "libft_def.h"
-# include "get_next_line_def.h"
+#ifndef LIBFT_DEF_H
+# define LIBFT_DEF_H
 
-t_list		*init_fdlist(t_list **head, int init_fd);
-void		*del_fdlist(t_list **buff_list, t_list *target);
-t_fdbuff	*loc_fdbuff(t_list *node);
-int			is_ending_char(char c);
+enum	e_bool
+{
+	FALSE = 0,
+	TRUE
+};
+
+enum	e_returncode
+{
+	CODE_OK = 0,
+	CODE_ERROR_GENERIC = -1,
+	CODE_ERROR_IO = -2,
+	CODE_ERROR_MALLOC = -3,
+	CODE_ERROR_SCOPE = -4
+};
+
+typedef long long			t_ll;
+typedef unsigned long long	t_ull;
+typedef unsigned int		t_uint;
+typedef unsigned char		t_uchar;
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+typedef struct s_intarr
+{
+	int	*data;
+	int	cap;
+	int	len;
+}	t_intarr;
+
+typedef struct s_chararr
+{
+	char	*data;
+	int		cap;
+	int		len;
+}	t_chararr;
+
 #endif

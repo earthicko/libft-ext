@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 static int	will_overflow_when_multiplied(size_t A, size_t B)
 {

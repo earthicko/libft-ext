@@ -10,8 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "ft_printf.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 int	fwrite_plain(int fd, t_conv *conv)
 {
@@ -20,8 +22,8 @@ int	fwrite_plain(int fd, t_conv *conv)
 
 static int	fwrite_char_with_padding(int fd, t_conv *conv, int c, char *pad)
 {
-	unsigned char	buf;
-	int				res;
+	t_uchar	buf;
+	int		res;
 
 	buf = c;
 	if (!conv->f_left)

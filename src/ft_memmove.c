@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft_def.h"
 #include <stdlib.h>
 
-static void	ft_memmove_rtol(unsigned char *dst, unsigned char *src, size_t len)
+static void	ft_memmove_rtol(t_uchar *dst, t_uchar *src, size_t len)
 {
 	src += (len - 1);
 	dst += (len - 1);
@@ -25,7 +26,7 @@ static void	ft_memmove_rtol(unsigned char *dst, unsigned char *src, size_t len)
 	}
 }
 
-static void	ft_memmove_ltor(unsigned char *dst, unsigned char *src, size_t len)
+static void	ft_memmove_ltor(t_uchar *dst, t_uchar *src, size_t len)
 {
 	while (len > 0)
 	{
@@ -38,13 +39,13 @@ static void	ft_memmove_ltor(unsigned char *dst, unsigned char *src, size_t len)
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*cursor_src;
-	unsigned char	*cursor_dst;
+	t_uchar	*cursor_src;
+	t_uchar	*cursor_dst;
 
 	if (len == 0)
 		return (dst);
-	cursor_src = (unsigned char *) src;
-	cursor_dst = (unsigned char *) dst;
+	cursor_src = (t_uchar *) src;
+	cursor_dst = (t_uchar *) dst;
 	if (cursor_src == cursor_dst)
 		return (dst);
 	if (cursor_src < cursor_dst && cursor_dst < cursor_src + len)

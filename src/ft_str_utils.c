@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdarg.h>
-#include "libft.h"
-#include "libft.h"
+#include <stdlib.h>
 
 int	ft_strappend(char **body, const char *tail)
 {

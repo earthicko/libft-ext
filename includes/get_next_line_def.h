@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   get_next_line_def.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyle <donghyle@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 14:27:09 by donghyle          #+#    #+#             */
-/*   Updated: 2022/07/10 14:27:11 by donghyle         ###   ########.fr       */
+/*   Created: 2022/07/08 12:10:37 by donghyle          #+#    #+#             */
+/*   Updated: 2022/07/08 12:10:39 by donghyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
+#ifndef GET_NEXT_LINE_DEF_H
+# define GET_NEXT_LINE_DEF_H
 
-t_list	*ft_lstnew(void *content)
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+typedef struct s_fdbuff
 {
-	t_list	*node;
+	int		fd;
+	char	*buff;
+}	t_fdbuff;
 
-	node = (t_list *)malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->content = content;
-	node->next = NULL;
-	return (node);
-}
+#endif

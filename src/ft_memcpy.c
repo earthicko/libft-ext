@@ -10,17 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft_def.h"
 #include <stdlib.h>
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned char	*cursor_src;
-	unsigned char	*cursor_dst;
+	t_uchar	*cursor_src;
+	t_uchar	*cursor_dst;
 
 	if (dst == NULL && src == NULL)
 		return (dst);
-	cursor_src = (unsigned char *) src;
-	cursor_dst = (unsigned char *) dst;
+	cursor_src = (t_uchar *) src;
+	cursor_dst = (t_uchar *) dst;
 	while (n > 0)
 	{
 		n--;

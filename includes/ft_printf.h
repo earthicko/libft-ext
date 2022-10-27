@@ -12,64 +12,8 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "libft.h"
-
-# define SYMBOL_ALTFORM '#'
-# define SYMBOL_BLANK ' '
-# define SYMBOL_SIGN '+'
-# define SYMBOL_LEFT '-'
-# define SYMBOL_ZEROPAD '0'
-# define SYMBOL_CHAR 'c'
-# define SYMBOL_STR 's'
-# define SYMBOL_PTR 'p'
-# define SYMBOL_SDEC1 'd'
-# define SYMBOL_SDEC2 'i'
-# define SYMBOL_UDEC 'u'
-# define SYMBOL_LHEX 'x'
-# define SYMBOL_UHEX 'X'
-# define SYMBOL_PCENT '%'
-# define SYMBOL_NULL "(null)"
-# define CHARSET_DEC "0123456789"
-# define CHARSET_LHEX "0123456789abcdef"
-# define CHARSET_UHEX "0123456789ABCDEF"
-# define PREFIX_LHEX "0x"
-# define PREFIX_UHEX "0X"
-# define PREFIX_POS "+"
-# define PREFIX_NEG "-"
-# define PREFIX_BLANK " "
-# define L_PREFIX_HEX 2
-# define L_PREFIX_POS 1
-# define L_PREFIX_NEG 1
-# define L_PREFIX_BLANK 1
-
-typedef struct s_conv
-{
-	int		i_conv;
-	char	*s;
-	char	*e;
-	int		minwidth;
-	int		precision;
-	int		f_left;
-	int		f_zeropad;
-	int		f_precision;
-	int		f_minwidth;
-	int		f_altform;
-	int		f_blank;
-	int		f_sign;
-}	t_conv;
-
-enum e_conv
-{
-	PLAIN = 0,
-	CHAR,
-	STR,
-	PTR,
-	SDEC,
-	UDEC,
-	LHEX,
-	UHEX,
-	PCENT
-};
+# include "libft_def.h"
+# include "ft_printf_def.h"
 
 //			ft_printf.c      
 int			ft_printf(const char *format, ...);

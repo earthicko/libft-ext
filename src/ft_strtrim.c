@@ -34,10 +34,10 @@ static int	ft_is_in_map(char c, int *map)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int				map[UCHAR_MAX + 1];
-	unsigned int	i_start;
-	unsigned int	i_end;
-	size_t			len;
+	int		map[UCHAR_MAX + 1];
+	t_uint	i_start;
+	t_uint	i_end;
+	size_t	len;
 
 	ft_build_map(set, map);
 	i_start = 0;
