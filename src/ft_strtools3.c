@@ -5,80 +5,100 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyle <donghyle@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 13:54:50 by donghyle          #+#    #+#             */
-/*   Updated: 2022/07/10 13:54:51 by donghyle         ###   ########.fr       */
+/*   Created: 2022/07/08 12:10:21 by donghyle          #+#    #+#             */
+/*   Updated: 2022/07/08 12:10:22 by donghyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 #include <stdlib.h>
 
-size_t	ft_strlen(const char *str)
+char	*ft_strdup(const char *s1)
 {
-	size_t	len;
+	size_t	l_s1;
+	char	*dup;
 
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
+	l_s1 = ft_strlen(s1);
+	dup = (char *)malloc(l_s1 + 1);
+	if (!dup)
+		return (NULL);
+	ft_strlcpy(dup, s1, l_s1 + 1);
+	return (dup);
 }
 
-static void	ft_build_map(char const *set, int *map)
+void	ft_striteri(char *s, void (*f)(t_uint, char*))
 {
-	size_t	i;
 	size_t	len;
+	t_uint	i;
 
-	i = 0;
-	while (i < UCHAR_MAX + 1)
-		map[i++] = 0;
-	len = ft_strlen(set);
+	len = ft_strlen(s);
 	i = 0;
 	while (i < len)
-		map[((int)set[i++]) - CHAR_MIN] = 1;
+	{
+		f(i, s + i);
+		i++;
+	}
 }
 
-static int	ft_is_in_map(char c, int *map)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	return (map[(int)c - CHAR_MIN]);
-}
+	size_t	len_1;
+	size_t	len_2;
+	char	*joined;
 
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	int		map[UCHAR_MAX + 1];
-	t_uint	i_start;
-	t_uint	i_end;
-	size_t	len;
-
-	ft_build_map(set, map);
-	i_start = 0;
-	i_end = ft_strlen(s1);
-	len = (size_t) i_end;
-	while (i_start < len && ft_is_in_map(s1[i_start], map))
-		i_start++;
-	while (1 <= i_end && ft_is_in_map(s1[i_end - 1], map))
-		i_end--;
-	if (i_start < i_end)
-		len = i_end - i_start;
-	else
-		len = 0;
-	return (ft_substr(s1, i_start, len));
-}
-
-char	*ft_substr(char const *s, t_uint start, size_t len)
-{
-	size_t			len_s;
-	char			*substr;
-
-	len_s = ft_strlen(s);
-	if ((size_t) start >= len_s)
-		len = 0;
-	else if (len_s - (size_t) start < len)
-		len = len_s - (size_t) start;
-	substr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!substr)
+	len_1 = ft_strlen(s1);
+	len_2 = ft_strlen(s2);
+	joined = (char *)malloc(sizeof(char) * (len_1 + len_2 + 1));
+	if (!joined)
 		return (NULL);
-	ft_memcpy(substr, s + start, len);
-	substr[len] = '\0';
-	return (substr);
+	ft_memcpy(joined, s1, len_1);
+	ft_memcpy(joined + len_1, s2, len_2);
+	joined[len_1 + len_2] = '\0';
+	return (joined);
+}
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	size_t	len_src;
+	size_t	len_dst;
+	size_t	i_src;
+	size_t	i_dst;
+
+	len_src = ft_strlen(src);
+	len_dst = ft_strlen(dst);
+	i_src = 0;
+	i_dst = len_dst;
+	if (dstsize > len_dst)
+	{
+		while (i_dst < dstsize - 1 && src[i_src] != '\0')
+		{
+			dst[i_dst] = src[i_src];
+			i_src++;
+			i_dst++;
+		}
+		dst[i_dst] = '\0';
+	}
+	if (dstsize < len_dst)
+		return (len_src + dstsize);
+	else
+		return (len_src + len_dst);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	src_len;
+	size_t	idx;
+
+	src_len = ft_strlen(src);
+	if (dstsize > 0)
+	{
+		idx = 0;
+		while (src[idx] != '\0' && idx < dstsize - 1)
+		{
+			dst[idx] = src[idx];
+			idx++;
+		}
+		dst[idx] = '\0';
+	}
+	return (src_len);
 }

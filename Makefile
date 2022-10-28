@@ -19,9 +19,8 @@ SRCNAME		= \
 			ft_atoi \
 			ft_itoa \
 			ft_put_fd \
-			ft_lstadd \
-			ft_lstclear \
 			ft_lsttools \
+			ft_lsttools2 \
 			get_next_line \
 			get_next_line_utils \
 			ft_printf \

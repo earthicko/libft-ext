@@ -1,62 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lsttools.c                                      :+:      :+:    :+:   */
+/*   ft_lsttools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyle <donghyle@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 14:27:02 by donghyle          #+#    #+#             */
-/*   Updated: 2022/07/10 14:27:03 by donghyle         ###   ########.fr       */
+/*   Created: 2022/07/10 14:26:54 by donghyle          #+#    #+#             */
+/*   Updated: 2022/07/10 14:26:56 by donghyle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+t_list	*ft_lstnew(void *content)
 {
-	while (lst != NULL)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	*head;
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
+}
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*last;
+
+	if (*lst)
+	{
+		last = ft_lstlast(*lst);
+		last->next = new;
+	}
+	else
+		*lst = new;
+}
+
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
 	t_list	*cursor;
+	t_list	*cursor_next;
 
-	head = NULL;
-	while (lst != NULL)
+	cursor = *lst;
+	while (cursor != NULL)
 	{
-		cursor = ft_lstnew(f(lst->content));
-		if (!cursor)
-		{
-			ft_lstclear(&head, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&head, cursor);
-		lst = lst->next;
+		cursor_next = cursor->next;
+		ft_lstdelone(cursor, del);
+		cursor = cursor_next;
 	}
-	return (head);
+	*lst = NULL;
 }
 
-int	ft_lstsize(t_list *lst)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	int	size;
-
-	size = 0;
-	while (lst != NULL)
-	{
-		size++;
-		lst = lst->next;
-	}
-	return (size);
-}
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	while (lst != NULL && lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	del(lst->content);
+	free(lst);
 }
