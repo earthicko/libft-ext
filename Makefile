@@ -8,7 +8,7 @@ SRCNAME		= \
 			ft_asciitools \
 			ft_asciitools2 \
 			ft_memtools \
-			ft_memmove \
+			ft_memtools2 \
 			ft_strtools \
 			ft_strtools2 \
 			ft_strtools3 \
@@ -18,7 +18,6 @@ SRCNAME		= \
 			ft_split_by_chars \
 			ft_atoi \
 			ft_itoa \
-			ft_calloc \
 			ft_put_fd \
 			ft_lstadd \
 			ft_lstclear \
