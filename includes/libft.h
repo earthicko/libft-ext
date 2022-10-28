@@ -22,6 +22,7 @@ int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isspace(char c);
 int			ft_isprint(int c);
+int			ft_iseol(char c);
 size_t		ft_strlen(const char *str);
 int			ft_strarrlen(char **strarr);
 void		*ft_memset(void *b, int c, size_t len);

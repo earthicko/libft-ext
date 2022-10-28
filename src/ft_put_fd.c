@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_put_fd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyle <donghyle@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,12 +12,24 @@
 
 #include <unistd.h>
 
-static void	ft_putdigit(int digit, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-	char	buffer;
+	write(fd, &c, 1);
+}
 
-	buffer = digit + '0';
-	write(fd, &buffer, 1);
+void	ft_putstr_fd(char *s, int fd)
+{
+	while (*s != '\0')
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
+}
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
 
 static void	ft_putnbr_unsigned_fd(int n, int fd)
@@ -35,7 +47,7 @@ static void	ft_putnbr_unsigned_fd(int n, int fd)
 		divider /= 10;
 		if (digit < 0)
 			digit = -digit;
-		ft_putdigit(digit, fd);
+		ft_putchar_fd(digit + '0', fd);
 	}
 }
 

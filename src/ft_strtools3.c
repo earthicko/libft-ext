@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strtools3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: donghyle <donghyle@student.42seoul.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,6 +12,17 @@
 
 #include "libft.h"
 #include <limits.h>
+#include <stdlib.h>
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	len;
+
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
+}
 
 static void	ft_build_map(char const *set, int *map)
 {
@@ -52,4 +63,22 @@ char	*ft_strtrim(char const *s1, char const *set)
 	else
 		len = 0;
 	return (ft_substr(s1, i_start, len));
+}
+
+char	*ft_substr(char const *s, t_uint start, size_t len)
+{
+	size_t			len_s;
+	char			*substr;
+
+	len_s = ft_strlen(s);
+	if ((size_t) start >= len_s)
+		len = 0;
+	else if (len_s - (size_t) start < len)
+		len = len_s - (size_t) start;
+	substr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!substr)
+		return (NULL);
+	ft_memcpy(substr, s + start, len);
+	substr[len] = '\0';
+	return (substr);
 }

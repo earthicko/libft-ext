@@ -5,59 +5,26 @@ CFLAGS		= -Wall -Wextra -Werror
 RM			= rm -f
 
 SRCNAME		= \
-			ft_isalpha \
-			ft_isdigit \
-			ft_isalnum \
-			ft_isascii \
-			ft_isspace \
-			ft_isprint \
-			ft_strlen \
-			ft_strarrlen \
-			ft_memset \
-			ft_bzero \
-			ft_memcpy \
+			ft_asciitools \
+			ft_asciitools2 \
+			ft_memtools \
 			ft_memmove \
-			ft_strlcpy \
-			ft_strlcat \
-			ft_toupper \
-			ft_tolower \
-			ft_strchr \
-			ft_strrchr \
-			ft_strncmp \
-			ft_memchr \
-			ft_memcmp \
-			ft_strnstr \
-			ft_atoi \
-			ft_atoi_if_valid \
-			ft_calloc \
-			ft_strdup \
-			ft_substr \
-			ft_strjoin \
-			ft_strtrim \
+			ft_strtools \
+			ft_strtools2 \
+			ft_strtools3 \
+			ft_strtools4 \
+			ft_strarrtools \
 			ft_split \
 			ft_split_by_chars \
+			ft_atoi \
 			ft_itoa \
-			ft_strmapi \
-			ft_striteri \
-			ft_putchar_fd \
-			ft_putstr_fd \
-			ft_putendl_fd \
-			ft_putnbr_fd \
-			ft_str_utils \
-			ft_numlen \
-			ft_lstnew \
-			ft_lstadd_front \
-			ft_lstsize \
-			ft_lstlast \
-			ft_lstadd_back \
-			ft_lstdelone \
+			ft_calloc \
+			ft_put_fd \
+			ft_lstadd \
 			ft_lstclear \
-			ft_lstiter \
-			ft_lstmap \
-			ft_free_strarr \
+			ft_lsttools \
 			get_next_line \
 			get_next_line_utils \
-			get_next_line_utils2 \
 			ft_printf \
 			ft_printf_t_conv \
 			ft_printf_parse_format \

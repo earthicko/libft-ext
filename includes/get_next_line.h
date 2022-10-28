@@ -18,5 +18,4 @@
 t_list		*init_fdlist(t_list **head, int init_fd);
 void		*del_fdlist(t_list **buff_list, t_list *target);
 t_fdbuff	*loc_fdbuff(t_list *node);
-int			is_ending_char(char c);
 #endif

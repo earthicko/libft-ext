@@ -44,7 +44,7 @@ static char	*extract_line(t_list *buff_stored)
 	i = 0;
 	if (!loc_fdbuff(buff_stored)->buff[i])
 		return (NULL);
-	while (!is_ending_char(loc_fdbuff(buff_stored)->buff[i]))
+	while (!ft_iseol(loc_fdbuff(buff_stored)->buff[i]))
 		i++;
 	new_line = (char *)malloc(sizeof(char) * (i + 2));
 	if (!new_line)
@@ -53,7 +53,7 @@ static char	*extract_line(t_list *buff_stored)
 	while (1)
 	{
 		new_line[i] = loc_fdbuff(buff_stored)->buff[i];
-		if (is_ending_char(loc_fdbuff(buff_stored)->buff[i]))
+		if (ft_iseol(loc_fdbuff(buff_stored)->buff[i]))
 			break ;
 		i++;
 	}
@@ -70,7 +70,7 @@ static void	update_buff(t_list **buff_list, t_list *buff_stored)
 
 	len = 0;
 	i = 0;
-	while (!is_ending_char(loc_fdbuff(buff_stored)->buff[i]))
+	while (!ft_iseol(loc_fdbuff(buff_stored)->buff[i]))
 		i++;
 	len_new = ft_strlen(loc_fdbuff(buff_stored)->buff) - i + 1;
 	new_buff = (char *)malloc(len_new);

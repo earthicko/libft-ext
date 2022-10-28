@@ -14,6 +14,19 @@
 #include "ft_printf.h"
 #include <stdlib.h>
 
+int	ft_numlen_base(t_ll num, t_ll base)
+{
+	int	len;
+
+	len = 0;
+	while (num != 0)
+	{
+		num /= base;
+		len++;
+	}
+	return (len);
+}
+
 int	cstr_nbr_fill_str(char *buf, t_ll nbr, char *base, int l_base)
 {
 	int	digit;
