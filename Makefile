@@ -1,7 +1,7 @@
 NAME		= libft.a
 
 CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -MMD -MP
 RM			= rm -f
 
 SRCNAME		= \
@@ -38,24 +38,27 @@ SRCNAME		= \
 
 SRC			= $(addprefix src/, $(addsuffix .c, $(SRCNAME)))
 OBJ			= $(addprefix src/, $(addsuffix .o, $(SRCNAME)))
+DEP			= $(addprefix src/, $(addsuffix .d, $(SRCNAME)))
 
-all: ${NAME}
+all: $(NAME)
 
-objs :
-	make -j 4 $(OBJ)
+$(NAME): $(OBJ)
+	ar -rcs $(NAME) $(OBJ)
 
-${NAME} : objs
-	ar -rcus ${NAME} ${OBJ}
+-include $(DEP)
 
-.c.o :
-	${CC} ${CFLAGS} -I includes -c $< -o $@
+%.o: %.c
+	$(CC) $(CFLAGS) -Iincludes -c $< -o $@
 
-clean :
-	${RM} ${OBJ}
+clean:
+	$(RM) $(OBJ) $(DEP)
 
-fclean : clean
-	${RM} ${NAME}
+fclean:
+	make clean
+	$(RM) $(NAME)
 
-re : fclean all
+re:
+	make fclean
+	make all
 
-.PHONY : all bonus clean fclean re $(NAME)
+.PHONY : all clean fclean re
