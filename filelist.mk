@@ -15,6 +15,7 @@ FILE_LIBFT	= \
 			ft_put_fd \
 			ft_lsttools \
 			ft_lsttools2 \
+			ft_free \
 			get_next_line \
 			get_next_line_utils \
 			ft_printf \
