@@ -29,6 +29,7 @@ enum	e_returncode
 	CODE_ERROR_DATA = -5
 };
 
+typedef int					t_bool;
 typedef long long			t_ll;
 typedef unsigned long long	t_ull;
 typedef unsigned int		t_uint;

@@ -1,64 +1,27 @@
 NAME		= libft.a
 
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -MMD -MP
-RM			= rm -f
+BASE_DIR	= ../..
+INC_DIR		= -I./includes
+CFLAGS		= -Wall -Werror -Wextra -MMD -MP $(ACFLAGS) $(INC_DIR)
+ARFLAGS		= rcs
 
-SRCNAME		= \
-			ft_asciitools \
-			ft_asciitools2 \
-			ft_memtools \
-			ft_memtools2 \
-			ft_strtools \
-			ft_strtools2 \
-			ft_strtools3 \
-			ft_strtools4 \
-			ft_strarrtools \
-			ft_split \
-			ft_split_by_chars \
-			ft_atoi \
-			ft_itoa \
-			ft_put_fd \
-			ft_lsttools \
-			ft_lsttools2 \
-			get_next_line \
-			get_next_line_utils \
-			ft_printf \
-			ft_printf_t_conv \
-			ft_printf_parse_format \
-			ft_printf_parse_format_utils \
-			ft_printf_create_str \
-			ft_printf_create_str_utils \
-			ft_printf_fwrite_chr \
-			ft_printf_fwrite_num \
-			ft_printf_fwrite_ptr \
-			ft_printf_fwrite_utils \
-			t_intarr \
-			t_chararr
-
-SRC			= $(addprefix src/, $(addsuffix .c, $(SRCNAME)))
-OBJ			= $(addprefix src/, $(addsuffix .o, $(SRCNAME)))
-DEP			= $(addprefix src/, $(addsuffix .d, $(SRCNAME)))
+include filelist.mk
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	ar -rcs $(NAME) $(OBJ)
+$(NAME): $(OBJ_LIBFT)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJ_LIBFT)
 
--include $(DEP)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -Iincludes -c $< -o $@
+-include $(DEP_LIBFT)
 
 clean:
-	$(RM) $(OBJ) $(DEP)
+	$(RM) $(OBJ_LIBFT) $(DEP_LIBFT)
 
-fclean:
-	make clean
+fclean: clean
 	$(RM) $(NAME)
 
 re:
-	make fclean
-	make all
+	@make fclean
+	@make all
 
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re
