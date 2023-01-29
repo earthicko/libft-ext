@@ -3,6 +3,7 @@ FILE_LIBFT	= \
 			ft_asciitools2 \
 			ft_memtools \
 			ft_memtools2 \
+			ft_memtools3 \
 			ft_strtools \
 			ft_strtools2 \
 			ft_strtools3 \
