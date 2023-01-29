@@ -1,7 +1,6 @@
 NAME		= libft.a
 
-BASE_DIR	= ../..
-INC_DIR		= -I./includes
+INC_DIR		:= $(INC_DIR) -I./includes
 CFLAGS		= -Wall -Werror -Wextra -MMD -MP $(ACFLAGS) $(INC_DIR)
 ARFLAGS		= rcs
 
