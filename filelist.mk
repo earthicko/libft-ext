@@ -1,4 +1,5 @@
 FILE_LIBFT	= \
+			ft_rand \
 			ft_asciitools \
 			ft_asciitools2 \
 			ft_memtools \

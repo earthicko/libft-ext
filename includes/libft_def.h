@@ -13,6 +13,8 @@
 #ifndef LIBFT_DEF_H
 # define LIBFT_DEF_H
 
+# define FT_RAND_MAX 32767
+
 enum	e_bool
 {
 	FALSE = 0,

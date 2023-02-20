@@ -16,6 +16,9 @@
 # include <stddef.h>
 # include "libft_def.h"
 
+//			ft_rand
+int			ft_rand(void);
+void		ft_srand(unsigned long seed);
 //			ft_asciitools
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
