@@ -64,8 +64,8 @@ void		*ft_realloc(void *ptr, size_t oldsize, size_t newsize);
 void		ft_free(int n_ptr, ...);
 //			str <-> int conversions
 int			ft_atoi(const char *str);
-int			ft_atoi_if_valid(char *str, int *ret);
-int			ft_atof_if_valid(char *str, double *ret);
+int			ft_atoi_if_valid(const char *str, int *ret);
+int			ft_atof_if_valid(const char *str, double *ret);
 char		*ft_itoa(int n);
 //			ft_put_fd
 void		ft_putchar_fd(char c, int fd);

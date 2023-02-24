@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static void	handle_sign(char **cursor, int *sign)
+static void	handle_sign(const char **cursor, int *sign)
 {
 	if (**cursor == '-')
 	{
@@ -34,21 +34,21 @@ static void	handle_digit(char c, double *val, int *incrementer)
 	(*val) = (*val) * 10.0f + (c - '0');
 }
 
-static int	handle_number(char *str, int *digits_after_decimal, double *val)
+static int	handle_number(const char *str, int *digits_after_dot, double *val)
 {
 	int	decimal_found;
-	int	digits_before_decimal;
+	int	digits_before_dot;
 
-	digits_before_decimal = 0;
+	digits_before_dot = 0;
 	decimal_found = 0;
 	while (*str != '\0')
 	{
 		if (ft_isdigit(*str))
 		{
 			if (decimal_found)
-				handle_digit(*str, val, digits_after_decimal);
+				handle_digit(*str, val, digits_after_dot);
 			else
-				handle_digit(*str, val, &digits_before_decimal);
+				handle_digit(*str, val, &digits_before_dot);
 		}
 		else if (*str == '.')
 		{
@@ -63,14 +63,14 @@ static int	handle_number(char *str, int *digits_after_decimal, double *val)
 	return (0);
 }
 
-static void	handle_power(int digits_after_decimal, double *val)
+static void	handle_power(int digits_after_dot, double *val)
 {
 	int	power;
 	int	i;
 
 	power = 1;
 	i = 0;
-	while (i < digits_after_decimal)
+	while (i < digits_after_dot)
 	{
 		power *= 10;
 		i++;
@@ -79,7 +79,7 @@ static void	handle_power(int digits_after_decimal, double *val)
 		(*val) /= power;
 }
 
-int	ft_atof_if_valid(char *str, double *ret)
+int	ft_atof_if_valid(const char *str, double *ret)
 {
 	double	value;
 	int		sign;

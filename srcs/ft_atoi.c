@@ -12,25 +12,22 @@
 
 #include "libft.h"
 
-static int	is_number(char *str)
+static int	is_number(const char *str)
 {
-	char	*cursor;
-
-	cursor = str;
-	while (*cursor != '\0' && ft_isspace(*cursor))
-		cursor++;
-	if (*cursor == '-' || *cursor == '+')
-		cursor++;
-	if (!ft_isdigit(*cursor))
+	while (*str != '\0' && ft_isspace(*str))
+		str++;
+	if (*str == '-' || *str == '+')
+		str++;
+	if (!ft_isdigit(*str))
 		return (0);
-	while (*cursor != '\0' && ft_isdigit(*cursor))
-		cursor++;
-	if (*cursor != '\0')
+	while (*str != '\0' && ft_isdigit(*str))
+		str++;
+	if (*str != '\0')
 		return (0);
 	return (1);
 }
 
-static void	init_ft_atoi_strict(char **cursor, int *sign)
+static void	init_ft_atoi_strict(const char **cursor, int *sign)
 {
 	while (**cursor != '\0' && ft_isspace(**cursor))
 		(*cursor)++;
@@ -45,30 +42,28 @@ static void	init_ft_atoi_strict(char **cursor, int *sign)
 
 static int	ft_atoi_strict(const char *str, int *ret)
 {
-	char	*cursor;
 	int		nbr;
 	int		nbr_prev;
 	int		sign;
 
 	nbr = 0;
 	nbr_prev = 0;
-	cursor = (char *) str;
-	init_ft_atoi_strict(&cursor, &sign);
-	while (*cursor != '\0' && ft_isdigit(*cursor))
+	init_ft_atoi_strict(&str, &sign);
+	while (*str != '\0' && ft_isdigit(*str))
 	{
-		nbr = nbr_prev * 10 + sign * ((int)(*cursor - '0'));
+		nbr = nbr_prev * 10 + sign * ((int)(*str - '0'));
 		if (sign == 1 && nbr < nbr_prev)
 			return (CODE_ERROR_GENERIC);
 		if (sign == -1 && nbr > nbr_prev)
 			return (CODE_ERROR_GENERIC);
 		nbr_prev = nbr;
-		cursor++;
+		str++;
 	}
 	*ret = nbr;
 	return (CODE_OK);
 }
 
-int	ft_atoi_if_valid(char *str, int *ret)
+int	ft_atoi_if_valid(const char *str, int *ret)
 {
 	if (!is_number(str))
 		return (CODE_ERROR_GENERIC);
@@ -77,25 +72,23 @@ int	ft_atoi_if_valid(char *str, int *ret)
 
 int	ft_atoi(const char *str)
 {
-	char	*cursor;
 	long	output;
 	long	sign;
 
 	output = 0;
-	cursor = (char *) str;
-	while (*cursor != '\0' && ft_isspace(*cursor))
-		cursor++;
+	while (*str != '\0' && ft_isspace(*str))
+		str++;
 	sign = 1;
-	if (*cursor == '+' || *cursor == '-')
+	if (*str == '+' || *str == '-')
 	{
-		if (*cursor == '-')
+		if (*str == '-')
 			sign = -1;
-		cursor++;
+		str++;
 	}
-	while (*cursor != '\0' && ft_isdigit(*cursor))
+	while (*str != '\0' && ft_isdigit(*str))
 	{
-		output = output * 10 + ((long)(*cursor - '0'));
-		cursor++;
+		output = output * 10 + ((long)(*str - '0'));
+		str++;
 	}
 	output *= sign;
 	return ((int) output);
