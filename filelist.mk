@@ -14,6 +14,7 @@ FILE_LIBFT	= \
 			ft_split_by_chars \
 			ft_atoi \
 			ft_atof \
+			ft_atof_if_valid \
 			ft_itoa \
 			ft_put_fd \
 			ft_lsttools \
