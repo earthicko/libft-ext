@@ -18,7 +18,7 @@ void	handle_power(int digits_after_dot, double *val);
 
 double	ft_atof(const char *str)
 {
-	static const long long	nan = 0x7FE0000000000000;
+	static const long long	nan = 0x7ff8000000000000L;
 	double					value;
 	int						sign;
 	int						digits_after_decimal;
