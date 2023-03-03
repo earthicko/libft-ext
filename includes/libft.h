@@ -18,6 +18,7 @@
 
 //			ft_rand
 int			ft_rand(void);
+int			ft_rand_r(unsigned long *seed);
 void		ft_srand(unsigned long seed);
 //			ft_asciitools
 int			ft_isalpha(int c);

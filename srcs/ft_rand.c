@@ -12,6 +12,12 @@
 
 #include "libft_def.h"
 
+int	ft_rand_r(unsigned long *seed)
+{
+	*seed = *seed * 1103515245 + 12345;
+	return ((int)((*seed / 65536) % FT_RAND_MAX));
+}
+
 static void	ft_rand_processor(int mode, int *output, unsigned long seed)
 {
 	static int				initialized;
